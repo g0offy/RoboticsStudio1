@@ -1,0 +1,10 @@
+/home/krel/ros2_ws/src/rs1_lab1/build/CMakeFiles/uninstall.dir
+/home/krel/ros2_ws/src/rs1_lab1/build/CMakeFiles/rs1_lab1_uninstall.dir
+/home/krel/ros2_ws/src/rs1_lab1/build/CMakeFiles/opencv_sub.dir
+/home/krel/ros2_ws/src/rs1_lab1/build/CMakeFiles/test.dir
+/home/krel/ros2_ws/src/rs1_lab1/build/CMakeFiles/edit_cache.dir
+/home/krel/ros2_ws/src/rs1_lab1/build/CMakeFiles/rebuild_cache.dir
+/home/krel/ros2_ws/src/rs1_lab1/build/CMakeFiles/list_install_components.dir
+/home/krel/ros2_ws/src/rs1_lab1/build/CMakeFiles/install.dir
+/home/krel/ros2_ws/src/rs1_lab1/build/CMakeFiles/install/local.dir
+/home/krel/ros2_ws/src/rs1_lab1/build/CMakeFiles/install/strip.dir

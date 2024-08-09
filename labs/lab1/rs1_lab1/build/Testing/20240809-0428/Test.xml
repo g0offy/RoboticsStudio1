@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20240809-0428-Experimental"
+	Name="krel-Ubuntu"
+	Generator="ctest-3.22.1"
+	CompilerName="/usr/bin/c++"
+	CompilerVersion="11.4.0"
+	OSName="Linux"
+	Hostname="krel-Ubuntu"
+	OSRelease="6.5.0-45-generic"
+	OSVersion="#45~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon Jul 15 16:40:02 UTC 2"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="AuthenticAMD"
+	VendorID="Advanced Micro Devices"
+	FamilyID="25"
+	ModelID="97"
+	ProcessorCacheSize="1024"
+	NumberOfLogicalCPU="32"
+	NumberOfPhysicalCPU="16"
+	TotalVirtualMemory="2047"
+	TotalPhysicalMemory="31284"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="4797.5"
+	>
+	<Testing>
+		<StartDateTime>Aug 09 18:55 AEST</StartDateTime>
+		<StartTestTime>1723193745</StartTestTime>
+		<TestList/>
+		<EndDateTime>Aug 09 18:55 AEST</EndDateTime>
+		<EndTestTime>1723193745</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>
