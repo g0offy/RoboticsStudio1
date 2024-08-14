@@ -11,10 +11,12 @@ Welcome to the Robotics Studio project! This document outlines the coding standa
   ```cpp
   int counter = 0;
   int startCount = 0;
+  ```
 Avoid: 
+  ```cpp
 int start_count = 0;
 int startcount = 0;
-
+```
 Private Variables
 Follows the same CamelCase convention as regular variables.
 Functions
