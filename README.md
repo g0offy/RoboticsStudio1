@@ -51,7 +51,4 @@ The code standards that we will be using to ensure clean and legible code.
 
 - **Simplistic Naming:** Names should be kept as simple as possible, avoiding underscores or other special characters.
 
-Thank you for adhering to these standards to ensure that our codebase remains clean, consistent, and easy to navigate.
-```
 
-This should be a clean and readable Markdown version of your original content.
