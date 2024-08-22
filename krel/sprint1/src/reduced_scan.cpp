@@ -11,7 +11,7 @@ public:
         sub1_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
             "/scan", 10, std::bind(&LaserScanModifier::callback, this, std::placeholders::_1));
         // Publisher created for /filtered_scan topic
-        pub1_ = this->create_publisher<sensor_msgs::msg::LaserScan>("filtered_scan", 10);
+        pub1_ = this->create_publisher<sensor_msgs::msg::LaserScan>("modified_scan", 10);
         // Step size for filtering
         n_ = 5; // filtered by nth value, displays every nth point
     }
@@ -28,21 +28,10 @@ private:
         modifiedMsg.scan_time = msg->scan_time;
         modifiedMsg.range_min = msg->range_min;
         modifiedMsg.range_max = msg->range_max;
-
         // Filter ranges
         for (size_t i = 0; i < msg->ranges.size(); i += n_) {
             modifiedMsg.ranges.push_back(msg->ranges[i]);
-            RCLCPP_INFO(this->get_logger(), "Adding range index: %zu", i);
         }
-
-        // Filter intensities if available
-        if (!msg->intensities.empty()) {
-            for (size_t i = 0; i < msg->intensities.size(); i += n_) {
-                modifiedMsg.intensities.push_back(msg->intensities[i]);
-                RCLCPP_INFO(this->get_logger(), "Adding intensity index: %zu", i);
-            }
-        }
-
         // Publish the filtered message
         pub1_->publish(modifiedMsg);
     }
