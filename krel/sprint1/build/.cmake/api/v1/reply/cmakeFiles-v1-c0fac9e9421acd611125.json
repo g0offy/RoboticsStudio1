@@ -3090,11 +3090,6 @@
 		{
 			"isCMake" : true,
 			"isExternal" : true,
-			"path" : "/usr/share/cmake-3.22/Modules/CheckIncludeFile.c.in"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
 			"path" : "/usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake"
 		},
 		{
@@ -4106,8 +4101,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/home/krel/ros2_ws/src/sprint1/build",
-		"source" : "/home/krel/ros2_ws/src/sprint1"
+		"build" : "/home/krel/git/RoboticsStudio1/krel/sprint1/build",
+		"source" : "/home/krel/git/RoboticsStudio1/krel/sprint1"
 	},
 	"version" : 
 	{

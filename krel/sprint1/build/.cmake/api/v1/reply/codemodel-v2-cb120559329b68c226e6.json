@@ -68,8 +68,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/krel/ros2_ws/src/sprint1/build",
-		"source" : "/home/krel/ros2_ws/src/sprint1"
+		"build" : "/home/krel/git/RoboticsStudio1/krel/sprint1/build",
+		"source" : "/home/krel/git/RoboticsStudio1/krel/sprint1"
 	},
 	"version" : 
 	{

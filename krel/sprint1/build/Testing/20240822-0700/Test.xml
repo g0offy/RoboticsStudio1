@@ -6,29 +6,29 @@
 	CompilerName="/usr/bin/c++"
 	CompilerVersion="11.4.0"
 	OSName="Linux"
-	Hostname="krel-Ubuntu"
+	Hostname="krel-HP-EliteBook-Folio-1040-G3"
 	OSRelease="6.8.0-40-generic"
 	OSVersion="#40~22.04.3-Ubuntu SMP PREEMPT_DYNAMIC Tue Jul 30 17:30:19 UTC 2"
 	OSPlatform="x86_64"
 	Is64Bits="1"
-	VendorString="AuthenticAMD"
-	VendorID="Advanced Micro Devices"
-	FamilyID="25"
-	ModelID="97"
-	ProcessorCacheSize="1024"
-	NumberOfLogicalCPU="32"
-	NumberOfPhysicalCPU="16"
-	TotalVirtualMemory="0"
-	TotalPhysicalMemory="31290"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="78"
+	ProcessorCacheSize="4096"
+	NumberOfLogicalCPU="4"
+	NumberOfPhysicalCPU="2"
+	TotalVirtualMemory="2047"
+	TotalPhysicalMemory="7822"
 	LogicalProcessorsPerPhysical="2"
-	ProcessorClockFrequency="5238.34"
+	ProcessorClockFrequency="2499.99"
 	>
 	<Testing>
-		<StartDateTime>Aug 22 17:26 AEST</StartDateTime>
-		<StartTestTime>1724311585</StartTestTime>
+		<StartDateTime>Aug 22 21:42 AEST</StartDateTime>
+		<StartTestTime>1724326920</StartTestTime>
 		<TestList/>
-		<EndDateTime>Aug 22 17:26 AEST</EndDateTime>
-		<EndTestTime>1724311585</EndTestTime>
+		<EndDateTime>Aug 22 21:42 AEST</EndDateTime>
+		<EndTestTime>1724326920</EndTestTime>
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>

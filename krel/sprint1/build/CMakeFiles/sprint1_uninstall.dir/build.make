@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/krel/ros2_ws/src/sprint1
+CMAKE_SOURCE_DIR = /home/krel/git/RoboticsStudio1/krel/sprint1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/krel/ros2_ws/src/sprint1/build
+CMAKE_BINARY_DIR = /home/krel/git/RoboticsStudio1/krel/sprint1/build
 
 # Utility rule file for sprint1_uninstall.
 
@@ -67,7 +67,7 @@ include CMakeFiles/sprint1_uninstall.dir/compiler_depend.make
 include CMakeFiles/sprint1_uninstall.dir/progress.make
 
 CMakeFiles/sprint1_uninstall:
-	/usr/bin/cmake -P /home/krel/ros2_ws/src/sprint1/build/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
+	/usr/bin/cmake -P /home/krel/git/RoboticsStudio1/krel/sprint1/build/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
 
 sprint1_uninstall: CMakeFiles/sprint1_uninstall
 sprint1_uninstall: CMakeFiles/sprint1_uninstall.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/sprint1_uninstall.dir/clean:
 .PHONY : CMakeFiles/sprint1_uninstall.dir/clean
 
 CMakeFiles/sprint1_uninstall.dir/depend:
-	cd /home/krel/ros2_ws/src/sprint1/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/krel/ros2_ws/src/sprint1 /home/krel/ros2_ws/src/sprint1 /home/krel/ros2_ws/src/sprint1/build /home/krel/ros2_ws/src/sprint1/build /home/krel/ros2_ws/src/sprint1/build/CMakeFiles/sprint1_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/krel/git/RoboticsStudio1/krel/sprint1/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/krel/git/RoboticsStudio1/krel/sprint1 /home/krel/git/RoboticsStudio1/krel/sprint1 /home/krel/git/RoboticsStudio1/krel/sprint1/build /home/krel/git/RoboticsStudio1/krel/sprint1/build /home/krel/git/RoboticsStudio1/krel/sprint1/build/CMakeFiles/sprint1_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/sprint1_uninstall.dir/depend
 

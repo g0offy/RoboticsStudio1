@@ -139,7 +139,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/krel/ros2_ws/src/sprint1/build"
+			"value" : "/home/krel/git/RoboticsStudio1/krel/sprint1/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -2859,7 +2859,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/krel/ros2_ws/src/sprint1/build"
+			"value" : "/home/krel/git/RoboticsStudio1/krel/sprint1/build"
 		},
 		{
 			"name" : "sprint1_IS_TOP_LEVEL",
@@ -2883,7 +2883,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/krel/ros2_ws/src/sprint1"
+			"value" : "/home/krel/git/RoboticsStudio1/krel/sprint1"
 		},
 		{
 			"name" : "statistics_msgs_DIR",

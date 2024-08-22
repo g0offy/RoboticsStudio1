@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/krel/ros2_ws/src/sprint1/src/reduced_scan.cpp" "CMakeFiles/reducedscan.dir/src/reduced_scan.cpp.o" "gcc" "CMakeFiles/reducedscan.dir/src/reduced_scan.cpp.o.d"
+  "/home/krel/git/RoboticsStudio1/krel/sprint1/src/reduced_scan.cpp" "CMakeFiles/reducedscan.dir/src/reduced_scan.cpp.o" "gcc" "CMakeFiles/reducedscan.dir/src/reduced_scan.cpp.o.d"
   )
 
 # Targets to which this target links.
