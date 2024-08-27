@@ -139,7 +139,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/krel/ros2_ws/src/rs1_lab1/build"
+			"value" : "/home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -2927,7 +2927,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/krel/ros2_ws/src/rs1_lab1/build"
+			"value" : "/home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1/build"
 		},
 		{
 			"name" : "rs1_lab1_IS_TOP_LEVEL",
@@ -2951,7 +2951,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/krel/ros2_ws/src/rs1_lab1"
+			"value" : "/home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1"
 		},
 		{
 			"name" : "sensor_msgs_DIR",

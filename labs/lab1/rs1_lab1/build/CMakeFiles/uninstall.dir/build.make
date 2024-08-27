@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/krel/ros2_ws/src/rs1_lab1
+CMAKE_SOURCE_DIR = /home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/krel/ros2_ws/src/rs1_lab1/build
+CMAKE_BINARY_DIR = /home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1/build
 
 # Utility rule file for uninstall.
 
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/krel/ros2_ws/src/rs1_lab1/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/krel/ros2_ws/src/rs1_lab1 /home/krel/ros2_ws/src/rs1_lab1 /home/krel/ros2_ws/src/rs1_lab1/build /home/krel/ros2_ws/src/rs1_lab1/build /home/krel/ros2_ws/src/rs1_lab1/build/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1 /home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1 /home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1/build /home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1/build /home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1/build/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/krel/ros2_ws/src/rs1_lab1/src/opencv_sub.cpp" "CMakeFiles/opencv_sub.dir/src/opencv_sub.cpp.o" "gcc" "CMakeFiles/opencv_sub.dir/src/opencv_sub.cpp.o.d"
+  "/home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1/src/opencv_sub.cpp" "CMakeFiles/opencv_sub.dir/src/opencv_sub.cpp.o" "gcc" "CMakeFiles/opencv_sub.dir/src/opencv_sub.cpp.o.d"
   )
 
 # Targets to which this target links.

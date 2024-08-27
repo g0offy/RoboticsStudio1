@@ -4435,8 +4435,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/home/krel/ros2_ws/src/rs1_lab1/build",
-		"source" : "/home/krel/ros2_ws/src/rs1_lab1"
+		"build" : "/home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1/build",
+		"source" : "/home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1"
 	},
 	"version" : 
 	{
