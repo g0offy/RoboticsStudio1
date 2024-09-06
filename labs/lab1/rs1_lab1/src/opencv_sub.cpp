@@ -23,7 +23,7 @@ public:
 private:
     // this function will accept the sub_ msg, convert it from ROS message to openCV, draw an image, , convert it back, then publish it back
     void callback(const sensor_msgs::msg::Image::SharedPtr msg){
-        cv_bridge::CvImagePtr cv_ptr;
+        cv_bridge::CvImagePtr cv_ptr; //cv bridge connects cv and ros
         try {
             cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::RGB8);
         } catch (cv_bridge::Exception& e) {

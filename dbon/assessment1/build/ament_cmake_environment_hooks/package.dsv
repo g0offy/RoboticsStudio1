@@ -1,0 +1,4 @@
+source;share/assessment1/local_setup.bash
+source;share/assessment1/local_setup.dsv
+source;share/assessment1/local_setup.sh
+source;share/assessment1/local_setup.zsh
