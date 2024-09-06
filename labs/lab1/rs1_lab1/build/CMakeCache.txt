@@ -32,7 +32,7 @@ AMENT_CMAKE_SYMLINK_INSTALL:BOOL=OFF
 AMENT_CMAKE_UNINSTALL_TARGET:BOOL=ON
 
 //The path where test results are generated
-AMENT_TEST_RESULTS_DIR:PATH=/home/krel/ros2_ws/src/rs1_lab1/build/test_results
+AMENT_TEST_RESULTS_DIR:PATH=/home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1/build/test_results
 
 //Build the testing tree.
 BUILD_TESTING:BOOL=ON
@@ -268,7 +268,7 @@ PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 Python3_EXECUTABLE:FILEPATH=/usr/bin/python3
 
 //Name of the computer/site where compile is being run
-SITE:STRING=krel-Ubuntu
+SITE:STRING=krel-HP-EliteBook-Folio-1040-G3
 
 //Path to a file.
 TINYXML2_INCLUDE_DIR:PATH=/usr/include
@@ -630,7 +630,7 @@ CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=1
 CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/krel/ros2_ws/src/rs1_lab1
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/krel/git/RoboticsStudio1/labs/lab1/rs1_lab1
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER
