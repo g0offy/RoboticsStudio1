@@ -1,0 +1,51 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "${default}",
+                "limitSymbolsToIncludedHeaders": false
+            },
+            "includePath": [
+                "/home/krel/ros2_ws/install/turtlesim/include/**",
+                "/home/krel/ros2_ws/install/turtlebot3_fake_node/include/**",
+                "/home/krel/ros2_ws/install/turtlebot3_msgs/include/**",
+                "/home/krel/ros2_ws/install/turtlebot3_gazebo/include/**",
+                "/home/krel/ros2_ws/install/robot_localization/include/**",
+                "/home/krel/ros2_ws/install/dynamixel_sdk_custom_interfaces/include/**",
+                "/home/krel/ros2_ws/install/dynamixel_sdk/include/**",
+                "/home/krel/pepper_ros2_ws/install/naoqi_libqicore/include/**",
+                "/home/krel/pepper_ros2_ws/install/naoqi_libqi/include/**",
+                "/home/krel/pepper_ros2_ws/install/naoqi_bridge_msgs/include/**",
+                "/opt/ros/humble/include/**",
+                "/home/krel/ros2_ws/src/DynamixelSDK/dynamixel_sdk/include/**",
+                "/home/krel/ros2_ws/src/DynamixelSDK/dynamixel_sdk_examples/include/**",
+                "/home/krel/ros2_ws/src/robot_localization/include/**",
+                "/home/krel/ros2_ws/src/ros_tutorials/turtlesim/include/**",
+                "/home/krel/ros2_ws/src/rs1_lab5/include/**",
+                "/home/krel/ros2_ws/src/turtlebot3/turtlebot3_node/include/**",
+                "/home/krel/ros2_ws/src/turtlebot3_simulations/turtlebot3_fake_node/include/**",
+                "/home/krel/ros2_ws/src/turtlebot3_simulations/turtlebot3_gazebo/include/**",
+                "include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "c++14"
+        },
+        {
+            "name": "C++",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}
