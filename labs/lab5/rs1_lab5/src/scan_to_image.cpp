@@ -72,22 +72,27 @@ private:
                 relative_orientaion_ += 360.0;
             }
             RCLCPP_INFO(this->get_logger(), "Relative Orientation: %f", relative_orientaion_);
-            //rotate the turtlebot to the correct orientation, try to bring the relative orientation to 0
+            // rotate the turtlebot to the correct orientation, try to bring the relative orientation to 0
         }
-    // Use a P controller to rotate the robot and bring the relative orientation to 0
-    if (relative_orientaion_ > 0.005)
-    {
-        auto twist_msg = geometry_msgs::msg::Twist();
-        twist_msg.angular.z = 0.05; // Rotate clockwise with angular velocity of 0.5
-        cmd_publisher_->publish(twist_msg);
-
-    }
-    else if (relative_orientaion_ < -0.005)
-    {
-         auto twist_msg = geometry_msgs::msg::Twist();
-        twist_msg.angular.z = -0.05; // Rotate anti-clockwise with angular velocity of 0.5
-        cmd_publisher_->publish(twist_msg);
-    }
+        // Use a P controller to rotate the robot and bring the relative orientation to 0
+        if (relative_orientaion_ > 0.005)
+        {
+            auto twist_msg = geometry_msgs::msg::Twist();
+            twist_msg.angular.z = 0.05; // Rotate clockwise with angular velocity of 0.5
+            cmd_publisher_->publish(twist_msg);
+        }
+        else if (relative_orientaion_ < -0.005)
+        {
+            auto twist_msg = geometry_msgs::msg::Twist();
+            twist_msg.angular.z = -0.05; // Rotate anti-clockwise with angular velocity of 0.5
+            cmd_publisher_->publish(twist_msg);
+        }
+        else
+        {
+            auto twist_msg = geometry_msgs::msg::Twist();
+            twist_msg.angular.z = 0.0; // Stop rotation
+            cmd_publisher_->publish(twist_msg);
+        }
     }
 
     cv::Mat laserScanToMat(const sensor_msgs::msg::LaserScan::SharedPtr &scan)
