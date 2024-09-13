@@ -39,16 +39,16 @@ private:
         // Convert LaserScan to image
         cv::Mat scan_image = laserScanToMat(msg);
         
-
-        cv::imshow(WINDOW4, scan_image);
+        cv::imshow(WINDOW3, scan_image);
         cv::waitKey(1);
 
         if (!map_image_.empty()) {
             // Capture the first image (map image) from the map callback
             scan_image_ = scan_image.clone();
             calculateYawChange();
+            visualizeMatches(map_section_, scan_image_);
             cv::waitKey(1);
-        } 
+        }
     }
     
 
@@ -60,22 +60,39 @@ private:
 
         cv::Mat map_image = m_MapColImage.clone();
 
-        // // Resize the map image to match the scan image size (500x500)
-        // cv::resize(map_image_, map_image_, cv::Size(500, 500));
+        double roi_width = 65;  // Set desired width for the ROI
+        double roi_height = 100;  // Set desired height for the ROI
+        // Extract section of the map around the robot (Image A)
+        double roi_x = std::max(0.0, std::min(robot_x_ - roi_width / 2,static_cast<double>(map_image.cols) - roi_width));
+        double roi_y = std::max(0.0, std::min(robot_y_ - roi_height / 2, static_cast<double>(map_image.rows) - roi_height));
+
+        // Ensure ROI is within bounds
+        if (roi_width > 0 && roi_height > 0) {
+            cv::Rect roi(roi_x, roi_y, roi_width, roi_height);
+            cv::Mat map_section = map_image(roi).clone(); // Extracted section of the map
+
+            // Rotate Image A based on the robot's orientation
+            cv::Mat map_section_rotated;
+            cv::Point2f center(map_section.cols / 2.0, map_section.rows / 2.0);
+            cv::Mat rotation_matrix = cv::getRotationMatrix2D(center, robot_theta_ * 180.0 / CV_PI, 1.0);
+            cv::warpAffine(map_section, map_section_rotated, rotation_matrix, map_section.size());
+
+            // Resize Image A to make it larger
+            cv::Mat map_section_resized;
+            cv::resize(map_section_rotated, map_section_resized, cv::Size(), 3.0, 3.0, cv::INTER_LINEAR);
+            // resize to match scan
+            // cv::resize(map_section_rotated, map_section_resized, scan_image_.size(), 0, 0, cv::INTER_LINEAR);
+
+            map_section_ = map_section_resized.clone();
+            // // Display the resized section for verification
+            cv::imshow(WINDOW2, map_section_);
+        }
 
         cv::rotate(map_image, map_image, cv::ROTATE_90_COUNTERCLOCKWISE);
 
-        // // Extract section of the map around the robot
-        // cv::Mat map_section = extractMapSection(m_MapColImage, robot_x_, robot_y_, map_scale_, 100); // Image A
-        
-        // // Extract edges from Image A to create Image B
-        // cv::Mat edges = extractEdges(map_section); // Image B
 
         cv::imshow(WINDOW1, map_image);
-        // cv::imshow(WINDOW2, map_section);
-        // cv::imshow(WINDOW3, edges);
 
-        // map_image_ = edges.clone();
         map_image_ = map_image.clone();
 
         cv::waitKey(1);
@@ -86,7 +103,7 @@ private:
     {
         robot_x_ = msg->pose.pose.position.x;
         robot_y_ = msg->pose.pose.position.y;
-        // robot_theta_ = tf2::getYaw(msg->pose.pose.orientation); // Update robot's position and orientation
+        robot_theta_ = relative_orientaion_;
     }
 
     cv::Mat laserScanToMat(const sensor_msgs::msg::LaserScan::SharedPtr& scan)
@@ -151,50 +168,13 @@ private:
         // cv::imshow("Occupancy Grid", m_MapColImage);
         // cv::waitKey(1);
     }
-    cv::Mat extractMapSection(const cv::Mat& map_image, double robot_x, double robot_y, double map_resolution, int section_size)
-    {
-        // Convert robot coordinates from meters to pixels
-        int robot_x_pixel = static_cast<int>((robot_x - origin_x) / map_resolution);
-        int robot_y_pixel = static_cast<int>((robot_y - origin_y) / map_resolution);
-
-        // Define the region of interest (ROI) around the robot
-        int half_size = section_size / 2;
-        cv::Rect roi(robot_x_pixel - half_size, robot_y_pixel - half_size, section_size, section_size);
-
-        // Make sure the ROI is within the image bounds
-        roi.x = std::max(0, roi.x);
-        roi.y = std::max(0, roi.y);
-        roi.width = std::min(map_image.cols - roi.x, roi.width);
-        roi.height = std::min(map_image.rows - roi.y, roi.height);
-
-        // Extract the section
-        cv::Mat image_A = map_image(roi).clone();
-        return image_A;
-    }
-
-    // Extract edges from an image
-    cv::Mat extractEdges(const cv::Mat& image_A)
-    {
-        cv::Mat image_B;
-        // Convert to grayscale if not already
-        if (image_A.channels() > 1) {
-            cv::cvtColor(image_A, image_A, cv::COLOR_BGR2GRAY);
-        }
-
-        // Apply Gaussian blur to reduce noise
-        cv::Mat blurred;
-        cv::GaussianBlur(image_A, blurred, cv::Size(5, 5), 1.5);
-
-        // Apply Canny edge detector
-        cv::Canny(blurred, image_B, 50, 150);
-
-        return image_B;
-    }
 
     void calculateYawChange() {
 
         std::vector<cv::Point2f> mapPoints, scanPoints;
-        detectAndMatchFeatures(map_image_, scan_image_, mapPoints, scanPoints);
+        std::vector<cv::KeyPoint> keypoints1, keypoints2;
+        std::vector<cv::DMatch> goodMatches;
+        detectAndMatchFeatures(map_section_, scan_image_, mapPoints, scanPoints, keypoints1, keypoints2, goodMatches);
 
         if (mapPoints.size() < 3 || scanPoints.size() < 3){
             RCLCPP_ERROR(this->get_logger(), "Not enough points for affine transformation.");
@@ -218,11 +198,35 @@ private:
         }
     }
 
+    void filterMatchesByHomography(const std::vector<cv::KeyPoint>& keypoints1, const std::vector<cv::KeyPoint>& keypoints2, 
+                               std::vector<cv::DMatch>& matches, std::vector<cv::DMatch>& filtered_matches) 
+    {
+        if (matches.size() < 4) return;  // Need at least 4 matches to compute homography
+
+        // Convert keypoints to Point2f
+        std::vector<cv::Point2f> points1, points2;
+        for (const auto& match : matches) {
+            points1.push_back(keypoints1[match.queryIdx].pt);
+            points2.push_back(keypoints2[match.trainIdx].pt);
+        }
+
+        // Use RANSAC to find homography and remove outliers
+        std::vector<uchar> inliersMask(points1.size());
+        cv::Mat homography = cv::findHomography(points1, points2, cv::RANSAC, 3.0, inliersMask);
+
+        for (size_t i = 0; i < inliersMask.size(); i++) {
+            if (inliersMask[i]) {
+                filtered_matches.push_back(matches[i]);
+            }
+        }
+    }
+
     void detectAndMatchFeatures(const cv::Mat& img1, const cv::Mat& img2,
-                                std::vector<cv::Point2f>& mapPoints, std::vector<cv::Point2f>& scanPoints) 
+                                std::vector<cv::Point2f>& srcPoints, std::vector<cv::Point2f>& dstPoints,
+                                std::vector<cv::KeyPoint>& keypoints1, std::vector<cv::KeyPoint>& keypoints2,
+                                std::vector<cv::DMatch>& goodMatches) 
     {
         cv::Ptr<cv::ORB> orb = cv::ORB::create();
-        std::vector<cv::KeyPoint> keypoints1, keypoints2;
         cv::Mat descriptors1, descriptors2;
 
         orb->detectAndCompute(img1, cv::noArray(), keypoints1, descriptors1);
@@ -237,16 +241,39 @@ private:
             return a.distance < b.distance;
         });
 
-        // Determine the number of top matches to keep (30% of total matches)
-        size_t numGoodMatches = static_cast<size_t>(matches.size() * 0.15);
+        // // Determine the number of top matches to keep (10% of total matches)
+        // size_t numGoodMatches = static_cast<size_t>(matches.size() * 0.10);
 
-        // Keep only the best matches (top 30%)
-        std::vector<cv::DMatch> goodMatches(matches.begin(), matches.begin() + numGoodMatches);
+        // // Keep only the best matches (top 15%)
+        // goodMatches.assign(matches.begin(), matches.begin() + numGoodMatches);
+        // Keep only the best matches (top 10%)
+        size_t numGoodMatches = static_cast<size_t>(matches.size() * 0.10);
+        matches.resize(numGoodMatches);
 
-        for (const auto& match : matches) {
-            mapPoints.push_back(keypoints1[match.queryIdx].pt);
-            scanPoints.push_back(keypoints2[match.trainIdx].pt);
+        // Filter matches using homography
+        filterMatchesByHomography(keypoints1, keypoints2, matches, goodMatches);
+
+
+        for (const auto& match : goodMatches) {
+            srcPoints.push_back(keypoints1[match.queryIdx].pt);
+            dstPoints.push_back(keypoints2[match.trainIdx].pt);
         }
+    }
+
+    void visualizeMatches(const cv::Mat& img1, const cv::Mat& img2) {
+        // Detect and match features between Image B and Image C
+        std::vector<cv::Point2f> mapPoints, scanPoints;
+        std::vector<cv::KeyPoint> keypoints1, keypoints2;
+        std::vector<cv::DMatch> goodMatches;
+        detectAndMatchFeatures(img1, img2, mapPoints, scanPoints, keypoints1, keypoints2, goodMatches);
+
+        // Draw matches
+        cv::Mat img_matches;
+        cv::drawMatches(img1, keypoints1, img2, keypoints2, goodMatches, img_matches);
+
+        // Display the matches
+        cv::imshow(WINDOW4, img_matches);
+        cv::waitKey(1);
     }
     
     rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_subscriber_;
@@ -257,6 +284,9 @@ private:
     
     cv::Mat scan_image_;
     cv::Mat map_image_;
+    cv::Mat map_section_;
+
+    std::vector<cv::DMatch> matches_;
 
     bool scan_image_captured_ = false;
     bool map_image_captured_ = false;
@@ -265,6 +295,9 @@ private:
     cv::Mat m_MapBinImage;
     cv::Mat m_MapColImage;
 
+    double roi_size_ = 50;
+
+    cv::Point robot_position_;
     double robot_x_;
     double robot_y_;
     double robot_theta_;
@@ -279,9 +312,9 @@ private:
     double relative_orientaion_ = 0.0;
 
     const std::string WINDOW1 = "Image: Map";
-    const std::string WINDOW2 = "Image A: Map section";
-    const std::string WINDOW3 = "Image B: Map edges";
-    const std::string WINDOW4 = "Image C: Laser Scan";
+    const std::string WINDOW2 = "Image: Map section";
+    const std::string WINDOW3 = "Image: Laser Scan";
+    const std::string WINDOW4 = "Image: Feature detection";
 };
 
 int main(int argc, char **argv)
