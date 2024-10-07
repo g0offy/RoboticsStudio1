@@ -11,20 +11,31 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(OpenCV REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(visualization_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)  # Add this line
 
 # include directories
 include_directories(
   ${OpenCV_INCLUDE_DIRS}
 )
 
-# add executable
+# add executables
 add_executable(overlay src/overlay.cpp)
 ament_target_dependencies(overlay rclcpp std_msgs cv_bridge)
 target_link_libraries(overlay ${OpenCV_LIBS})
 
+add_executable(identify src/identify_node.cpp)
+ament_target_dependencies(identify rclcpp std_msgs cv_bridge sensor_msgs visualization_msgs geometry_msgs tf2_ros tf2_geometry_msgs nav_msgs)  # Add nav_msgs here
+target_link_libraries(identify ${OpenCV_LIBS})
+
 # install targets
 install(TARGETS
   overlay
+  identify
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
