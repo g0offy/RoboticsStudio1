@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="cylinder_model">
+    <static>false</static> <!-- True if the cylinder is immovable -->
+    <pose>0 0 0.5 0 0 0</pose> <!-- Initial position: x y z roll pitch yaw -->
+    <link name="link">
+      <inertial>
+        <mass>1.0</mass> <!-- Mass of the cylinder -->
+        <inertia>
+          <ixx>0.01</ixx>
+          <iyy>0.01</iyy>
+          <izz>0.01</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.15</radius>  <!-- 30cm diameter (0.15m radius) -->
+            <length>1.0</length>   <!-- Height of the cylinder -->
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <bounce/>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.15</radius> <!-- Same as collision radius -->
+            <length>1.0</length>  <!-- Same as collision length -->
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0 1 0 1</ambient> <!-- Color (Green) -->
+          <diffuse>0 1 0 1</diffuse>
+          <specular>0 0 0 1</specular>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
+
