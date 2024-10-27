@@ -1,0 +1,102 @@
+\hypertarget{classDetectCylinderNode}{}\doxysection{Detect\+Cylinder\+Node Class Reference}
+\label{classDetectCylinderNode}\index{DetectCylinderNode@{DetectCylinderNode}}
+
+
+Inheritance diagram for Detect\+Cylinder\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{classDetectCylinderNode__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Detect\+Cylinder\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{classDetectCylinderNode__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDetectCylinderNode_a1068dc910f1b8ac8d17eae93e774a3a6}\label{classDetectCylinderNode_a1068dc910f1b8ac8d17eae93e774a3a6}} 
+\mbox{\hyperlink{classDetectCylinderNode_a1068dc910f1b8ac8d17eae93e774a3a6}{Detect\+Cylinder\+Node}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Detect Cylinder Node object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDetectCylinderNode_ac44d4e61c22684ed5419f376380fcbf7}\label{classDetectCylinderNode_ac44d4e61c22684ed5419f376380fcbf7}} 
+\mbox{\hyperlink{classDetectCylinderNode_ac44d4e61c22684ed5419f376380fcbf7}{$\sim$\+Detect\+Cylinder\+Node}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Detect Cylinder Node object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDetectCylinderNode_aadfe8ab139d6d683152e8a9a430020ef}\label{classDetectCylinderNode_aadfe8ab139d6d683152e8a9a430020ef}} 
+void \mbox{\hyperlink{classDetectCylinderNode_aadfe8ab139d6d683152e8a9a430020ef}{scan\+Callback}} (const sensor\+\_\+msgs\+::msg\+::\+Laser\+Scan\+::\+Shared\+Ptr msg)
+\begin{DoxyCompactList}\small\item\em This function is called whenever a new laser scan message is received. \end{DoxyCompactList}\item 
+cv\+::\+Mat \mbox{\hyperlink{classDetectCylinderNode_a0ee48634778f17d49c116be2be34dfe4}{display\+Laser\+Scan}} (const sensor\+\_\+msgs\+::msg\+::\+Laser\+Scan\+::\+Shared\+Ptr \&scan)
+\begin{DoxyCompactList}\small\item\em This function displays the laser scan data in an Open\+CV window. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDetectCylinderNode_a841bd642d4522042e1eb784148f005a9}\label{classDetectCylinderNode_a841bd642d4522042e1eb784148f005a9}} 
+void \mbox{\hyperlink{classDetectCylinderNode_a841bd642d4522042e1eb784148f005a9}{detect\+Cylinder}} (const sensor\+\_\+msgs\+::msg\+::\+Laser\+Scan\+::\+Shared\+Ptr msg)
+\begin{DoxyCompactList}\small\item\em This function detects a cylinder given a set of laser data points. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDetectCylinderNode_a024ccf0aece26650bf442328407bb7dd}{detect\+Cylinder\+Open\+Cv}} (cv\+::\+Mat \&image)
+\begin{DoxyCompactList}\small\item\em This function detects a cylinder using Open\+CV. \end{DoxyCompactList}\item 
+std\+::vector$<$ Point $>$ \mbox{\hyperlink{classDetectCylinderNode_abe898085072b677b0b33217f53853ebd}{find\+Cluster}} (const sensor\+\_\+msgs\+::msg\+::\+Laser\+Scan\+::\+Shared\+Ptr msg)
+\begin{DoxyCompactList}\small\item\em This function finds clusters of points in the laser scan data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDetectCylinderNode_a024ccf0aece26650bf442328407bb7dd}\label{classDetectCylinderNode_a024ccf0aece26650bf442328407bb7dd}} 
+\index{DetectCylinderNode@{DetectCylinderNode}!detectCylinderOpenCv@{detectCylinderOpenCv}}
+\index{detectCylinderOpenCv@{detectCylinderOpenCv}!DetectCylinderNode@{DetectCylinderNode}}
+\doxysubsubsection{\texorpdfstring{detectCylinderOpenCv()}{detectCylinderOpenCv()}}
+{\footnotesize\ttfamily void Detect\+Cylinder\+Node\+::detect\+Cylinder\+Open\+Cv (\begin{DoxyParamCaption}\item[{cv\+::\+Mat \&}]{image }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function detects a cylinder using Open\+CV. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & The image to detect the cylinder in \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDetectCylinderNode_a0ee48634778f17d49c116be2be34dfe4}\label{classDetectCylinderNode_a0ee48634778f17d49c116be2be34dfe4}} 
+\index{DetectCylinderNode@{DetectCylinderNode}!displayLaserScan@{displayLaserScan}}
+\index{displayLaserScan@{displayLaserScan}!DetectCylinderNode@{DetectCylinderNode}}
+\doxysubsubsection{\texorpdfstring{displayLaserScan()}{displayLaserScan()}}
+{\footnotesize\ttfamily cv\+::\+Mat Detect\+Cylinder\+Node\+::display\+Laser\+Scan (\begin{DoxyParamCaption}\item[{const sensor\+\_\+msgs\+::msg\+::\+Laser\+Scan\+::\+Shared\+Ptr \&}]{scan }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function displays the laser scan data in an Open\+CV window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scan} & The laser scan message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The image with the laser scan data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDetectCylinderNode_abe898085072b677b0b33217f53853ebd}\label{classDetectCylinderNode_abe898085072b677b0b33217f53853ebd}} 
+\index{DetectCylinderNode@{DetectCylinderNode}!findCluster@{findCluster}}
+\index{findCluster@{findCluster}!DetectCylinderNode@{DetectCylinderNode}}
+\doxysubsubsection{\texorpdfstring{findCluster()}{findCluster()}}
+{\footnotesize\ttfamily std\+::vector$<$Point$>$ Detect\+Cylinder\+Node\+::find\+Cluster (\begin{DoxyParamCaption}\item[{const sensor\+\_\+msgs\+::msg\+::\+Laser\+Scan\+::\+Shared\+Ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function finds clusters of points in the laser scan data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The laser scan message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of points representing the clusters found 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/uts/git/\+Robotics\+Studio1/\+Bhupesh/sprint3/src/detect\+\_\+cylinder\+\_\+node.\+cpp\end{DoxyCompactItemize}
